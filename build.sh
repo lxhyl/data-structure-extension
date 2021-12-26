@@ -21,7 +21,7 @@ echo "build start"
 rootDir=$(pwd)
 
 cd $1
-dir=$(ls -l ./ |awk '/^d/ {print $NF}')
+dir=$(ls -l ./ |awk '/^d/ {print $NF}' | grep -v 'node_modules')
 rm -r $rootDir/docs/$1/docs.md
 for item in $dir
 do
