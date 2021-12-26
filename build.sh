@@ -8,8 +8,13 @@
 # eg:
 # build.sh typescript
 
-# will make typescript's documents
+# will make typescript's documents  
 
+
+if !(test -n "${1}");then 
+  echo "\033[31m Error:Build must have a param to assgin language folder \033[0m"
+  exit 0
+fi
 
 echo "build start"
 
@@ -20,7 +25,8 @@ dir=$(ls -l ./ |awk '/^d/ {print $NF}')
 rm -r $rootDir/docs/$1/docs.md
 for item in $dir
 do
-cd $item
+cd $item 
+mkdir $rootDir/docs/$1
 cat docs.md >> $rootDir/docs/$1/docs.md
 done
 
