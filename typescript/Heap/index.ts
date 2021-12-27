@@ -22,7 +22,7 @@ export default class Heap {
     this.options = options
     this.data = [...data]
     this.size = this.data.length
-    this.#build()
+    this.build()
   }
   // Private method to swap two item in array.
   #swap(i: number, j: number) {
@@ -49,19 +49,18 @@ export default class Heap {
     this.#swap(i, index)
     return this.#heapify(i)
   }
-  #build() {
+  build() {
     const len = Math.floor(this.size / 2)
-    for (let i = len - 1; i >= 0; i--) {
+    for (let i = len; i >= 0; i--) {
       // 节点堆化
       this.#heapify(i)
     }
+    return this
   }
-  insert(...arg) {
-    Array.from(arg).forEach(item => {
-      this.data.push(item)
-      this.size++
-    })
-    this.#build()
+  insert(value) {
+    this.data.push(value)
+    this.size++
+    this.build()
     return this
   }
   get() {
@@ -74,13 +73,21 @@ export default class Heap {
     this.data.pop()
     this.size -= 1
     this.#heapify(0)
+    return this
   }
+  // sort后原来的值会打乱
   sort() {
     for (let i = this.size - 1; i >= 0; i--) {
       this.#swap(0, i)
       this.size -= 1
       this.#heapify(0)
     }
+    // 恢复 size
+    this.size = this.data.length
+    return this.data
+  }
+  allData(){
     return this.data
   }
 }
+

@@ -17,8 +17,17 @@ data:Array<any> // 原始数据
 
 ## methods  
 
+* `build()` 构建堆
 * `insert(value)` 新插入一个值   
 * `get()`  返回堆顶元素
 * `delete()` 删除堆顶元素
-* `sort()` 堆排序
+* `sort()` 堆排序   *排序后将不再是一个堆，如果想得到堆，需重新构建*
+* `allData()` 返回所有值
 
+## eg  
+
+```js
+import Heap from "./index.ts" 
+const heap = new Heap({type:'minHeap'},[1,5,-2,10])
+heap.get()  // -2
+```
