@@ -1,6 +1,6 @@
 import Heap from "./index"
 
-describe("simple number item heap", () => {
+describe("simple number element heap", () => {
 
   test("build heap", () => {
     expect(new Heap({}, [10, 5, 1, 0]).allData()).toEqual([0, 5, 1, 10])
@@ -34,5 +34,22 @@ describe("simple number item heap", () => {
   test("rebuild heap", () => {
     expect(minHeap.build().allData()).toEqual([-20, 5, 10])
     expect(minHeap.get()).toBe(-20)
+  })
+})
+
+
+describe("object element Heap", () => {
+  interface itemType {
+    val: number,
+  }
+  const testArr: Array<itemType> = [{ val: -5 }, { val: 0 }, { val: 1 }, { val: 10 }]
+  const maxHeap = new Heap({
+    type: "maxHeap",
+    compareFun: (a: itemType, b: itemType) => a.val > b.val
+  },
+    testArr
+  )
+  test("top num should be min", () => {
+    expect(maxHeap.get()).toEqual(testArr.sort((a: itemType, b: itemType) => b.val - a.val)[0])
   })
 })
