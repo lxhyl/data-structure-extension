@@ -14,7 +14,7 @@
 * [1705.吃苹果的最大数目](https://leetcode-cn.com/problems/maximum-number-of-eaten-apples/)  
 
 
-### constructor  
+## constructor  
 
 *  `new Heap(options,data)`   
 
@@ -26,7 +26,7 @@ options:{
 data:Array<any> // 原始数据
 ```
 
-### methods  
+## methods  
 
 * `build()` 构建堆
 * `insert(value)` 新插入一个值   
@@ -35,7 +35,7 @@ data:Array<any> // 原始数据
 * `sort()` 堆排序   *排序后将不再是一个堆，如果想得到堆，需重新构建*
 * `allData()` 返回所有值
 
-### eg  
+## eg  
 
 ```js
 import Heap from "./index.ts" 
