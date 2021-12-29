@@ -22,11 +22,12 @@ rootDir=$(pwd)
 
 cd $1
 dir=$(ls -l ./ |awk '/^d/ {print $NF}' | grep -v 'node_modules')
-rm -r $rootDir/docs/$1/docs.md
+rm -r $rootDir/docs/$1/
+
+mkdir $rootDir/docs/$1
 for item in $dir
 do
-cd $item 
-mkdir $rootDir/docs/$1
+cd $rootDir/$1/$item 
 cat docs.md >> $rootDir/docs/$1/docs.md
 done
 

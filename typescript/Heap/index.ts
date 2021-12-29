@@ -58,9 +58,9 @@ export default class Heap {
     return this
   }
   insert(value) {
-    this.data.push(value)
+    this.data.unshift(value)
     this.size++
-    this.build()
+    this.#heapify(0)
     return this
   }
   get() {
