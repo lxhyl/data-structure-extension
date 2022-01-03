@@ -1,4 +1,4 @@
-import Heap from "./index"
+import {Heap} from "./index"
 
 describe("simple number element heap", () => {
 
@@ -7,7 +7,6 @@ describe("simple number element heap", () => {
   })
 
   const minHeap = new Heap({ type: "minHeap" }, [5, 1, 10, 0, -5])
-
   test("top num should be min", () => {
     expect(minHeap.get()).toBe(-5)
   })

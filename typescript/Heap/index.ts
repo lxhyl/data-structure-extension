@@ -12,8 +12,10 @@ const defaultOtions: OptionType = {
 }
 
 
-export default class Heap {
-  [x: string]: any
+export class Heap{
+  private option:OptionType
+  private data:Array<any>
+  private size:number
   /**
    * @param option see defaultOtions
    */
