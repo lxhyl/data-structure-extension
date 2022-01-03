@@ -1,10 +1,10 @@
-interface OptionsType {
+interface OptionType {
   type?: string,
   size?: number,
   compareFun?: Function
 }
 
-const defaultOtions: OptionsType = {
+const defaultOtions: OptionType = {
   // Heap type. minHeap or maxHeap
   type: "minHeap",
   // a function to compare  two value. if first > second return true
@@ -15,11 +15,11 @@ const defaultOtions: OptionsType = {
 export default class Heap {
   [x: string]: any
   /**
-   * @param options see defaultOtions
+   * @param option see defaultOtions
    */
-  constructor(options: OptionsType = {}, data: Array<any> = []) {
-    options = { ...defaultOtions, ...options }
-    this.options = options
+  constructor(option: OptionType = {}, data: Array<any> = []) {
+    option = { ...defaultOtions, ...option }
+    this.option = option
     this.data = [...data]
     this.size = this.data.length
     this.build()
@@ -30,7 +30,7 @@ export default class Heap {
   }
   #heapify(index: number) {
     const { data, size } = this
-    const { type, compareFun } = this.options
+    const { type, compareFun } = this.option
     if (index > size) return
     let i = index
     let left = i * 2 + 1
