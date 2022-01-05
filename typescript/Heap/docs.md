@@ -16,10 +16,10 @@
 
 ## constructor  
 
-*  `new Heap(options,data)`   
+*  `new Heap(option,data)`   
 
-```js
-options:{
+```ts
+option:{
   type: 'minHeap' | 'maxHeap' // 最大堆或最小堆
   compareFun?: Function // 自定义比较函数  eg: (a,b) => a.value > b.value 
 }
