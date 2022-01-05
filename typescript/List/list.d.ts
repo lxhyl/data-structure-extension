@@ -4,7 +4,9 @@ export interface ListType {
   storeType?: string,
 }
 
-export interface NodeType{
-  
+export interface NodeType<T>{
+   prev?:T | null
+   value:T
+   next?:T | null
 }
 

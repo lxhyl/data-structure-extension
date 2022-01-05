@@ -18,8 +18,12 @@ option:{
 
 ## methods  
 
-* `insert(item)`  
-* `get(item)`   
-* `delete(item)`   
+* `insert(item)`   插入
+* `get(item)`    获取item
+* `delete(item)`  删除
+* `getRoot()`   获取根节点
+* `getLast()`  获取尾节点
+* `getLength`  获取长度
+* `getIterator` 返回一个可迭代对象。可以使用`for of`等遍历
 
 
