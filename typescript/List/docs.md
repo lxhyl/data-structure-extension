@@ -6,7 +6,7 @@
 
 ## constructor
 
-* `new LikedList(option)`  
+* `new LinkedList(option)`  
 
 ```ts
 option:{
@@ -18,12 +18,17 @@ option:{
 
 ## methods  
 
-* `insert(item)`   插入
-* `get(item)`    获取item
-* `delete(item)`  删除
+* `unshift(item)` 插入item至开头
+* `push(item)` 插入item至链表尾
+* `pop()` 删除末尾
+* `shift()` 删除开头
+* `insert(item,index?)`   插入item至index处
+* `getValueByIndex(index)`   获取index处的值
+* `deleteByValue(value)`  根据节点的值删除
+* `deleteByIndex(index)`  根据节点的索引删除
 * `getRoot()`   获取根节点
 * `getLast()`  获取尾节点
-* `getLength`  获取长度
-* `getIterator` 返回一个可迭代对象。可以使用`for of`等遍历
+* `getLength()`  获取长度
+* `getIterator()` 返回一个可迭代对象。可以使用`for of`等遍历
 
 
