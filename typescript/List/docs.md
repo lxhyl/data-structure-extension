@@ -10,9 +10,8 @@
 
 ```ts
 option:{
-  type:'oneway' | 'bothway' // 单项或双向链表  
+  type:'oneway' | 'bothway' // 单向或双向链表  
   circle:false | true // 是否是循环链表
-  storeType:'object' | 'array' | 'map' // 用什么存储
 }
 ```  
 
@@ -26,7 +25,7 @@ option:{
 * `getValueByIndex(index)`   获取index处的值
 * `deleteByValue(value)`  根据节点的值删除
 * `deleteByIndex(index)`  根据节点的索引删除
-* `getRoot()`   获取根节点
+* `getHead()`   获取头节点
 * `getLast()`  获取尾节点
 * `getLength()`  获取长度
 * `getIterator()` 返回一个可迭代对象。可以使用`for of`等遍历

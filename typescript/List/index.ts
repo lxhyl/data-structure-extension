@@ -1,16 +1,14 @@
-import { ListType, NodeType } from "./_type_"
+import { ListType } from "./_type_"
 import { ListNode } from "./node"
 
 const DEFAULT_OPTION: ListType = {
-  type: 'oneway', // oneway bothway
-  circle: false,  // false true
-  storeType: 'object' // object array map
+  type: 'oneway', // oneway | bothway
+  circle: false,  // false | true
 }
 
 export class LinkedList {
-  [x: string]: any
   private option: ListType
-  private root
+  private head
   private last
   private length: number = 0
   constructor(option?: ListType) {
@@ -19,8 +17,8 @@ export class LinkedList {
   // 插入第一个元素
   private initList(item) {
     const newNode = this.createNode(item)
-    this.root = newNode
-    this.last = this.root
+    this.head = newNode
+    this.last = this.head
     this.length += 1
     return this
   }
@@ -29,7 +27,7 @@ export class LinkedList {
   }
   getValueByIndex(index: number) {
     let cur = 0
-    let node = this.root
+    let node = this.head
     while (node) {
       if (cur === index) return node
       node = node.next
@@ -38,15 +36,15 @@ export class LinkedList {
     return null
   }
   unshift(item) {
-    if (!this.root) return this.initList(item)
+    if (!this.head) return this.initList(item)
     const newNode = this.createNode(item)
-    newNode.next = this.root
-    this.root = newNode
+    newNode.next = this.head
+    this.head = newNode
     this.length += 1
     return this
   }
   push(item) {
-    if (!this.root) return this.initList(item)
+    if (!this.head) return this.initList(item)
     const newNode = this.createNode(item)
     this.last.next = newNode
     this.last = newNode
@@ -67,7 +65,7 @@ export class LinkedList {
   }
   shift() {
     if (this.length === 0) return undefined
-    this.root = this.root.next
+    this.head = this.head.next
     this.length -= 1
     return this
   }
@@ -77,12 +75,13 @@ export class LinkedList {
     this.last = prevLast
     prevLast.next = null
     this.length -= 1
+    return this
   }
   getIterator(justValue?:boolean) {
     const _this = this
     return {
       *[Symbol.iterator]() {
-        let node = _this.root
+        let node = _this.head
         if (!node) yield node
         while (node) {
           yield justValue ? node.value : node
@@ -92,18 +91,20 @@ export class LinkedList {
     }
   }
   deleteByValue(item) {
-    let prevNode = this.root
+    let prevNode = this.head
+    // 删除开头
     if(prevNode.value === item){
-       this.root = prevNode.next
+       this.head = prevNode.next
        this.length -= 1
-       return item
+       return this
     }
+    if(this.last.value === item) return this.pop()
     let node = prevNode.next
     while(node){
       if(node.value === item){
         prevNode.next = node.next
         this.length -= 1
-        return item
+        return this
       }
       prevNode = node
       node = node.next
@@ -112,13 +113,13 @@ export class LinkedList {
   }
   deleteByIndex(index){
     if(index <= 0) return this.shift()
-    if(index >= this.length) return this.pop()
+    if(index >= this.length - 1) return this.pop()
     const preIndexNode = this.getValueByIndex(index - 1)
     const nextIndexNode = this.getValueByIndex(index + 1)
     preIndexNode.next = nextIndexNode
     this.length -= 1
   }
-  getRoot() { return this.root }
+  getHead() { return this.head }
   getLast() { return this.last }
   getLength() { return this.length }
 }

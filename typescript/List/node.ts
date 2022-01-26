@@ -8,6 +8,6 @@ export class ListNode<T>{
     const {type} = option
     this.value = value
     this.next = null
-    if(type !== 'oneway') this.prev = null
+    if(type === 'bothway') this.prev = null
   }
 }
